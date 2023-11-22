@@ -1,3 +1,35 @@
+## 0.10.9 (17/10/2023)
+### Enhancement
+* Improvements in user experience when loading messages in a conversation in Android.
+
+### Bug fixes
+* Fix for bot variables not being set for resolved conversations in Android.
+
+## 0.10.9 (15/09/2023)
+### Bug fixes
+* Fix for a crash that occurs during "postback" flow in a bot conversation in Android.
+
+## 0.10.8 (04/09/2023)
+### Enhancement
+* Handle disabling of reply editor when bot response is pending in Android.
+
+### Bug fixes
+* Fix file attachment not opening in Android.
+
+## 0.10.7 (08/08/2023)
+### Features
+* Say hi to bot actions! Certain actions may need to be performed before or after the execution of a response in a bot conversation to complete the process. These changes can be anything in the chat screen, API triggers, pop-up feedbacks or articles, handover to agents, stop/Minimize conversations etc. You will be able to configure this via the bot builder using actions in iOS.
+* We are adding support for multi-select as a new input type for your customers. Customers will now be able to pick and choose multiple choices that appears as buttons in Android.
+
+### Enhancement
+* Handle disabling of reply editor when bot response is pending in iOS.
+* Improved displaying of last message in topic list with multiline text in iOS.
+* Update UI for single select button in Android.
+
+### Bug fixes
+* Fix sporadic crash while setting user properties in iOS
+* Fix triggering bot flow messages even when bot is unpublished in iOS.
+
 ## 0.10.6 (05/07/2023)
 ### Features
 * Support for multi-select Carousel as a new input type for your customers. Customers will now be able to pick and choose multiple choices that appears as a series of options with a horizontal scroll (carousel) on the screen. The options list can also contain images in iOS.
