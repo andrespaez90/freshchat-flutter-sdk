@@ -1,4 +1,31 @@
-## 0.10.9 (17/10/2023)
+## 0.10.13 (14/02/2024)
+### Bug fixes
+* Fix for potential ANR during app update in Android.
+* Fix for bot not re-triggering after resolving bot conversations in Android.
+* Fix for a crash happening while loading conversations in Android.
+* Fix for agent name is not updated when any bot conversations are assigned to any agent in Android.
+* Fix for Agent first name display issue when bot conversations are assigned to an agent.
+* Addressed crashes affecting users running iOS versions prior to 13.
+* Fixed compromised visibility of the date picker view in dark mode in iOS.
+* Fix display of team member information in chat messages.
+* Fix infinite loading issue for users with expired JWT authentication.
+
+## 0.10.12 (10/01/2023)
+### Bug fixes
+* Fix to enable text input editor when using Freshchat Public APIs to send messages on behalf of an agent/bot in Android.
+
+## 0.10.11 (11/12/2023)
+### Features
+* Support for multi-select Carousel as a new input type for your customers. Customers will now be able to pick and choose multiple choices that appears as a series of options with a horizontal scroll (carousel) on the screen. The options list can also contain images in Android.
+
+### Bug fixes
+* Fix for hyper links not scrolling to the desired index in FAQ webview in omni account in Android.
+* Fix for HTML code is being displayed in carousels primary & secondary buttons in Android.
+* Fix for conversation is not loading for Android Gradle Plugin 8.0 consumers in Android.
+* UI fixes for API generated proactive reply suggestions in iOS.
+* Fix intermittent delays in updating team member information when a conversation is assigned from the bot flow in iOS
+
+## 0.10.10 (17/10/2023)
 ### Enhancement
 * Improvements in user experience when loading messages in a conversation in Android.
 
