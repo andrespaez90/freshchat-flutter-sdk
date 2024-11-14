@@ -203,6 +203,17 @@ NSNotificationCenter *center;
     }
 }
 
+-(void)showConversationWithReferenceID:(FlutterMethodCall *) call {
+    @try {
+        NSString *conversationReferenceID = call.arguments[@"conversationReferenceID"];
+        NSString *topicName = call.arguments[@"topicName"];
+        UIViewController *visibleVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        [[Freshchat sharedInstance] showConversation:visibleVC withTopicName:topicName withConversationReferenceID:conversationReferenceID];
+    } @catch (NSException *exception) {
+        NSLog(@"Error on showing conversation with reference id: %@ %@", exception.name, exception.reason);
+    }
+}
+
 -(void)sendMessage:(FlutterMethodCall *) call{
     @try {
         FreshchatMessage *userMessage = [[FreshchatMessage alloc] initWithMessage:call.arguments[@"message"] andTag:call.arguments[@"tag"]];
@@ -480,6 +491,9 @@ NSNotificationCenter *center;
     [[Freshchat sharedInstance] openFreshchatDeeplink:link viewController:visibleVC];
 }
 
+-(void)dismissFreshchatView{
+    [[Freshchat sharedInstance] dismissFreshchatViews];
+}
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"getSdkVersion" isEqualToString:call.method]) {
@@ -508,6 +522,8 @@ NSNotificationCenter *center;
         [instance showFAQsWithOptions:call];
     }else if([@"showConversationsWithOptions" isEqualToString:call.method]){
         [instance showConversationsWithOptions:call];
+    }else if([@"showConversationWithReferenceID" isEqualToString:call.method]){
+        [instance showConversationWithReferenceID:call];
     }else if([@"sendMessage" isEqualToString:call.method]){
         [instance sendMessage:call];
     }else if([@"getUnreadCountAsync" isEqualToString:call.method]){
@@ -542,6 +558,8 @@ NSNotificationCenter *center;
         NSLog(@"Linkify not available for iOS");
     }else if([@"notifyAppLocaleChange" isEqualToString:call.method]){
         NSLog(@"notifyAppLocaleChange not available for iOS");
+    } else if([@"dismissFreshchatView" isEqualToString:call.method]){
+        [instance dismissFreshchatView];
     }
     else{
         result(FlutterMethodNotImplemented);

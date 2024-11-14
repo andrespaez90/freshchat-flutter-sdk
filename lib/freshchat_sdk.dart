@@ -229,7 +229,7 @@ class Freshchat {
     final String sdkVersion = await _channel.invokeMethod('getSdkVersion');
     final String operatingSystem = Platform.operatingSystem;
     // As there is no simple way to get current freshchat flutter sdk version, we are hardcoding here.
-    final String allSdkVersion = "flutter-0.10.13-$operatingSystem-$sdkVersion ";
+    final String allSdkVersion = "flutter-0.10.21-$operatingSystem-$sdkVersion ";
     return allSdkVersion;
   }
 
@@ -305,6 +305,14 @@ class Freshchat {
         <String, dynamic>{'filteredViewTitle': filteredViewTitle, 'tags': tags},
       );
     }
+  }
+
+  /// Without proper reference ID, either the default topic, or list of topics will be shown.
+  static void showConversationWithReferenceID(String conversationReferenceID, String topicName) async {
+    await _channel.invokeMethod(
+      'showConversationWithReferenceID',
+      <String, String>{'conversationReferenceID': conversationReferenceID, 'topicName': topicName},
+    );
   }
 
   /// Sync any change to user information, specified in JWT Token with Freshchat
@@ -485,6 +493,11 @@ class Freshchat {
   /// Notify any locale change that happens during runtime to Freshchat (Android)
   static void notifyAppLocaleChange() {
     _channel.invokeMethod("notifyAppLocaleChange");
+  }
+
+  /// Dismiss freshchat screen, if currently visible.
+  static void dismissFreshchatView() {
+    _channel.invokeMethod("dismissFreshchatView");
   }
 
   /// Stream which triggers a callback if the restoreID is generated for the user
